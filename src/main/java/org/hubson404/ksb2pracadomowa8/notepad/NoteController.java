@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 public class NoteController {
@@ -22,13 +23,13 @@ public class NoteController {
 
     @PostMapping("/api/notes")
     @ResponseStatus(HttpStatus.CREATED)
-    public NoteDto createNote(NoteDto noteDto){
-      return noteService.createNote(noteDto);
+    public NoteDto createNote(@RequestBody NoteDto noteDto) {
+        return noteService.createNote(noteDto);
     }
 
     @PatchMapping("/api/notes")
     @ResponseStatus(HttpStatus.CREATED)
-    public NoteDto modifyNote(NoteDto noteDto){
-      return noteService.modifyNote(noteDto);
+    public NoteDto modifyNote(@RequestBody NoteDto noteDto) {
+        return noteService.modifyNote(noteDto);
     }
 }

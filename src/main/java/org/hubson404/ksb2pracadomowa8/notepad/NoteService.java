@@ -1,6 +1,9 @@
 package org.hubson404.ksb2pracadomowa8.notepad;
 
 import lombok.RequiredArgsConstructor;
+import org.hubson404.ksb2pracadomowa8.exceptions.NoteNotFoundException;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,5 +52,21 @@ public class NoteService {
         return new NotesWrapper(mappedList);
     }
 
+    @EventListener(ApplicationReadyEvent.class)
+    public void insertDataToDb() {
+        Note note1 = new Note();
+        note1.setTitle("Test note title");
+        note1.setContent("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has " +
+                "been the industry's standard dummy text ever since the 1500s.  Lorem Ipsum has been the industry's " +
+                "standard dummy text ever since the 1500s.");
+        Note note2 = new Note();
+        note2.setTitle("Another note title");
+        note2.setContent("It is a long established fact that a reader will be distracted by the readable content " +
+                "of a page when looking at its layout.It is a long established fact that a reader will be distracted " +
+                "by the readable content of a page when looking at its layout.");
+
+        noteRepository.save(note1);
+        noteRepository.save(note2);
+    }
 
 }

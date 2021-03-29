@@ -1,0 +1,43 @@
+<button (click)="onAddNote()"
+        class="btn btn-primary">Add Note
+</button>
+<div
+  *ngIf="isOpen"
+  class="card-body">
+  <form #noteForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Title</label>
+      <input
+        #titleInput="ngModel"
+        class="form-control"
+        name="title"
+        ngModel
+        required
+        type="text">
+      <p *ngIf="!titleInput.valid && titleInput.touched" class="help-block">Title is required!</p>
+    </div>
+    <div class="form-group">
+      <label>Content</label>
+      <textarea
+        #contentInput="ngModel"
+        class="form-control"
+        name="content"
+        ngModel
+        required
+        style="height: 15rem">
+        </textarea>
+      <p *ngIf="!contentInput.valid && contentInput.touched" class="help-block">Content is required!</p>
+
+    </div>
+    <button
+      [disabled]="!noteForm.valid"
+      class="btn btn-success"
+      type="submit">Submit
+    </button>
+    |
+    <button
+      (click)="onAbortEdit()"
+      class="btn btn-warning">Abort
+    </button>
+  </form>
+</div>

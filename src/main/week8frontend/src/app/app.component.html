@@ -1,0 +1,26 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col col-md-10">
+      <h2>Week 8</h2>
+      <ul class="nav nav-tabs">
+        <li
+          [routerLinkActiveOptions]="{exact: true}"
+          role="presentation"
+          routerLinkActive="active">
+          <a routerLink="/forecasts">Forecast</a></li>
+        <li
+          role="presentation"
+          routerLinkActive="active">
+          <a routerLink="/notes">Notes</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-md-10">
+      <br>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+

@@ -5,6 +5,7 @@ public class NoteDto {
     private Long id;
     private String title;
     private String content;
+    private String date;
 
     public NoteDto(Long id, String title, String content) {
         this(title,content);
@@ -41,5 +42,13 @@ public class NoteDto {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

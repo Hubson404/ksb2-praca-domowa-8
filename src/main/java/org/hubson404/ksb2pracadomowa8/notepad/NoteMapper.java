@@ -1,5 +1,8 @@
 package org.hubson404.ksb2pracadomowa8.notepad;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class NoteMapper {
 
     public NoteDto mapToNoteDto(Note note) {
@@ -8,6 +11,7 @@ public class NoteMapper {
                 note.getTitle(),
                 note.getContent());
     }
+
     public Note mapToNote(NoteDto noteDto) {
         Note note = new Note();
         note.setTitle(noteDto.getTitle());

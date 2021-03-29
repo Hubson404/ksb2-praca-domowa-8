@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -19,6 +17,9 @@ public class Note {
     private Long id;
 
     private String title;
+
+    @Lob
+    @Column(name = "content", columnDefinition = "CLOB")
     private String content;
 
 }

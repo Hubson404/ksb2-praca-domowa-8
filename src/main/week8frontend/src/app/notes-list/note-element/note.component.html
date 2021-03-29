@@ -1,0 +1,46 @@
+<div class="card" style="width: 35rem;">
+  <div
+    *ngIf="!isBeingEdited"
+    class="card-body">
+    <h5 class="card-title">{{note.title}}
+      <span>
+        <button
+          (click)="onEditNote()"
+          class="btn btn-primary pull-right">Edit note
+        </button>
+      </span></h5>
+    <p class="card-text">{{note.content}}</p>
+
+  </div>
+  <div
+    *ngIf="isBeingEdited"
+    class="card-body">
+    <form #noteForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input
+          [ngModel]="tempTitle"
+          class="form-control"
+          name="title"
+          type="text">
+      </div>
+      <div class="form-group">
+        <textarea
+          [ngModel]="tempContent"
+          class="form-control"
+          name="content"
+          style="height: 15rem">
+        </textarea>
+      </div>
+      <button
+        class="btn btn-success"
+        type="submit">Submit
+      </button>
+      |
+      <button
+        (click)="onAbortEdit()"
+        class="btn btn-warning">Abort
+      </button>
+    </form>
+  </div>
+  <hr>
+</div>
